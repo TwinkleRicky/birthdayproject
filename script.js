@@ -1,5 +1,5 @@
 const MESSAGES_KEY = 'birthdayMessages';
-const PASSWORD = '0719';
+const PASSWORD = 'rickychoi719!';
 
 window.addEventListener('DOMContentLoaded', () => {
     loadMessages();
