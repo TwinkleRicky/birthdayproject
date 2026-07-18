@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생일 축하 메시지</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sketch-background"></div>
+    <div class="confetti"></div>
+    
+    <div class="container">
+        <!-- 메인 화면 -->
+        <div id="mainScreen" class="screen active">
+            <div class="header">
+                <h1 class="title">생일 축하합니다</h1>
+                <p class="date">7월 19일은 최정현 생일</p>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn btn-write" onclick="goToWrite()">메시지 남기기</button>
+                <button class="btn btn-view" onclick="showPasswordScreen()">메시지 보기</button>
+            </div>
+        </div>
+
+        <!-- 메시지 작성 화면 -->
+        <div id="writeScreen" class="screen">
+            <button class="back-btn" onclick="backToMain()">← BACK</button>
+            
+            <div class="write-container">
+                <h2>축하 메시지를 남겨주세요</h2>
+                
+                <div class="form-group">
+                    <label>이름 선택</label>
+                    <div class="name-options">
+                        <input type="radio" id="anonymous" name="nameChoice" value="anonymous" checked>
+                        <label for="anonymous" class="radio-label">익명</label>
+                        
+                        <input type="radio" id="named" name="nameChoice" value="named">
+                        <label for="named" class="radio-label">이름 입력</label>
+                    </div>
+                </div>
+                
+                <div id="nameInput" class="form-group" style="display: none;">
+                    <input type="text" id="senderName" placeholder="이름을 입력하세요" maxlength="20">
+                </div>
+                
+                <div class="form-group">
+                    <label>메시지</label>
+                    <textarea id="messageText" placeholder="축하 메시지를 작성하세요... (최대 500자)" maxlength="500"></textarea>
+                    <div class="char-count"><span id="charCount">0</span>/500</div>
+                </div>
+                
+                <button class="btn btn-submit" onclick="submitMessage()">메시지 전송</button>
+            </div>
+        </div>
+
+        <!-- 비밀번호 확인 화면 -->
+        <div id="passwordScreen" class="screen">
+            <button class="back-btn" onclick="backToMain()">← BACK</button>
+            
+            <div class="password-container">
+                <h2>메시지 보기</h2>
+                <p class="password-info">비밀번호를 입력하세요</p>
+                
+                <div class="form-group">
+                    <input type="password" id="passwordInput" placeholder="비밀번호 입력" onkeypress="if(event.key==='Enter') checkPassword()">
+                </div>
+                
+                <button class="btn btn-check" onclick="checkPassword()">확인</button>
+                <div id="passwordError" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- 메시지 목록 화면 -->
+        <div id="viewScreen" class="screen">
+            <button class="back-btn" onclick="backToMain()">← BACK</button>
+            
+            <div class="view-container">
+                <h2>받은 축하 메시지</h2>
+                <div id="messagesList" class="messages-list"></div>
+                
+                <div id="noMessages" class="no-messages">
+                    <p>아직 받은 메시지가 없습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
